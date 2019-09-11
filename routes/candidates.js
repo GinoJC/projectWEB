@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
     {}, 
     function(err, candidates){
       if(err) return res.status(500).send
-      (err);
+      (error);
 
       res.status(200).render(
-        'votacion',
+        'candidates',
         {
           candidates: candidates
         }
@@ -24,7 +24,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next){
 
     var candidate = new Candidate({
-      name: req.body.namecand,
+      name: req.body.nameCand,
+      lasName: req.body.lastCand,
+      sex: req.body.sexCand,
+      team: req.body.teamCand,
       cantVotes: 0
     });
 

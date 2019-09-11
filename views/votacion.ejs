@@ -1,3 +1,4 @@
+<% include header.ejs %>
 <div class="container">
     <div class="card mt-5 text-light bg-dark shadow-lg">
         <div class="card-header">
@@ -9,7 +10,10 @@
                             <thead class="thead-dark">
                                 <tr class="header">
                                     <th></th>
-                                    <th>Candidato</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Sexo</th>
+                                    <th>Partido</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -20,6 +24,15 @@
                                         </td>
                                         <td>
                                             <%= item.name %>
+                                        </td>
+                                        <td>
+                                            <%= item.lastName %>
+                                        </td>
+                                        <td>
+                                            <%= item.sex %>
+                                        </td>
+                                        <td>
+                                            <%= item.team %>
                                         </td>
                                     </tr>
                                 <% }); %>
@@ -34,4 +47,4 @@
         </div>
     </div>
 </div>
-
+<% include footer.ejs %>

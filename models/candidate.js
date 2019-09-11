@@ -5,7 +5,19 @@ var CandidateSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            unique: true,
+            required: true
+        },
+        lastName: {
+            type: String,
+            required: true
+        },
+        sex: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        team: {
+            type: String,
             required: true,
             trim: true
         },

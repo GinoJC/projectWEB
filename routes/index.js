@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require("request");
 var createError = require("http-errors");
+var Candidate = require("../models/candidate");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,6 +16,12 @@ router.get('/login', function(req, res, next){
 
 /* GET votacion */
 router.get('/votacion', function(req, res, next){
-  res.render('votacion', {title: "Votacion"});
+  res.render('votacion', {title: "Votacion", candidates: []});
 });
+
+/* GET candidatos */
+router.get('/candidates', function(req, res, next){
+  res.render('candidates', {title: "Candidatos", candidates: []});
+});
+
 module.exports = router;
