@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="card mt-5 text-light bg-dark shadow-lg">
+        <div class="card-header">
+            <h2 class="card-title">Elija al candidato que desea votar</h2>
+            <div class="formLog col-md-6 col-lg-6">
+                <form action="/candidates" method="POST">
+                    <div class="row p-2 mb-5">
+                        <table class="table table-responsive-sm table-striped">
+                            <thead class="thead-dark">
+                                <tr class="header">
+                                    <th></th>
+                                    <th>Candidato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% locals.candidates.forEach((item) => { %>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox"><input type="checkbox" name="cand" value="1"></div>
+                                        </td>
+                                        <td>
+                                            <%= item.name %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btnLog">
+                        <input class="btn btn-success btn-lg" type="submit" value="VOTAR">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
