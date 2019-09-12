@@ -1,5 +1,4 @@
-<% include header.ejs %>
-<div class="row p-2 mb-5">
+<div class="card-body candtable">
     <table class="table table-responsive-sm table-striped">
         <thead class="thead-dark">
             <tr class="header">
@@ -10,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <% locals.candidates.forEach((item) => { %>
+            <% candidates.forEach((item) => { %>
                 <tr>
                     <td>
                         <%= item.name %>
@@ -37,9 +36,6 @@
     <div class="card-body bg-light">
         <div>
             <div>
-                <div class="alert alert-danger <% if(! locals.error) { %> d-none <%}%>">
-                    <p id="error"><%= locals.error %></p>
-                </div>
                 <form action="/candidates" method="POST">
                     <div class="form-group">
                         <input class="form-control" type="text" name="nameCand" 
@@ -61,4 +57,3 @@
         </div>
     </div>
 </div>
-<% include footer.ejs %>

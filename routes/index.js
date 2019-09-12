@@ -16,12 +16,30 @@ router.get('/login', function(req, res, next){
 
 /* GET votacion */
 router.get('/votacion', function(req, res, next){
-  res.render('votacion', {title: "Votacion", candidates: []});
+  console.log('entra al router get');
+  Candidate.find((err, candidates) => {
+    if(err){
+      console.log(err);
+      return res.status(500).send(err);
+    } else {
+      res.status(200).render('votacion', {title: "Votacion", candidates: candidates });
+      console.log(candidates);
+    }
+  });
 });
 
 /* GET candidatos */
 router.get('/candidates', function(req, res, next){
-  res.render('candidates', {title: "Candidatos", candidates: []});
+  console.log('entra al router get');
+  Candidate.find((err, candidates) => {
+    if(err){
+      console.log(err);
+      return res.status(500).send(err);
+    } else {
+      res.status(200).render('candidates', { candidates: candidates });
+      console.log(candidates);
+    }
+  });
 });
 
 module.exports = router;
