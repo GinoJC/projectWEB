@@ -46,17 +46,4 @@ router.post('/', function(req, res, next){
   });
 });
 
-router.get('/votacion', function(req, res, next){
-  console.log('entra al router get');
-  Candidate.find((err, candidates) => {
-    if(err){
-      console.log(err);
-      return res.status(500).send(err);
-    } else {
-      res.status(200).render('votacion', {title: "Votacion", candidates: candidates });
-      console.log(candidates);
-    }
-  });
-});
-
 module.exports = router;
