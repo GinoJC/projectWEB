@@ -4,43 +4,45 @@
         <div class="card-header">
             <h2 class="card-title">Elija al candidato que desea votar</h2>
             <div class="formLog col-md-6 col-lg-6">
-                <div class="row p-2 mb-5">
-                    <table class="table table-responsive-sm table-striped">
-                        <thead class="thead-dark">
-                            <tr class="header">
-                                <th></th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Sexo</th>
-                                <th>Partido</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% locals.candidates.forEach((item) => { %>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox"><input type="checkbox" id="cand" value="<%= item._id %>" onchange="mostrar(this.value)"></div>
-                                    </td>
-                                    <td>
-                                        <%= item.name %>
-                                    </td>
-                                    <td>
-                                        <%= item.lastName %>
-                                    </td>
-                                    <td>
-                                        <%= item.sex %>
-                                    </td>
-                                    <td>
-                                        <%= item.team %>
-                                    </td>
+                <form action="/saveVote" method="POST">
+                    <div class="row p-2 mb-5">
+                        <table class="table table-responsive-sm table-striped">
+                            <thead class="thead-dark">
+                                <tr class="header">
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Sexo</th>
+                                    <th>Partido</th>
                                 </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="btnLog">
-                    <button onclick="mostrar()">mostrar</button>
-                </div>
+                            </thead>
+                            <tbody>
+                                <% locals.candidates.forEach((item) => { %>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox"><input type="checkbox" name="cand" value="<%= item._id %>" onchange="setID(this.value)"></div>
+                                        </td>
+                                        <td>
+                                            <%= item.name %>
+                                        </td>
+                                        <td>
+                                            <%= item.lastName %>
+                                        </td>
+                                        <td>
+                                            <%= item.sex %>
+                                        </td>
+                                        <td>
+                                            <%= item.team %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btnLog">
+                        <input class="btn btn-success btn-lg" type="submit" value="VOTAR">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

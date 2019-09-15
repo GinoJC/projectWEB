@@ -29,5 +29,17 @@ var CandidateSchema = new mongoose.Schema(
     }
 );
 
+CandidateSchema.statics.countVote = function(id, callback) {
+    Candidate.updateOne({ _id: id },
+        { 
+            $inc: { cantVotes: 1 }
+        },
+        (err) => {
+        if (err) {
+            return callback(err);
+        }
+    });
+};
+
 var Candidate = mongoose.model("Candidate", CandidateSchema);
 module.exports = Candidate;

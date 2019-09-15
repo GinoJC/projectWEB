@@ -39,7 +39,7 @@ UserSchema.statics.authenticate = function(dni, callback) {
 };
 
 UserSchema.statics.actualizaEstado = function(id, callback) {
-    User.updateOne({ _id: id },{ voto: true },(err) => {
+    User.updateOne({ _id: id },{ voted: true },(err) => {
         if (err) {
             return callback(err);
         }
