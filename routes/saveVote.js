@@ -21,7 +21,7 @@ router.post("/", function(req, res, next){
           }
     });
 
-    return res.redirect("/login");
+    return res.redirect("/statistics");
 });
 
 module.exports = router;

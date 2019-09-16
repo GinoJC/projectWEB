@@ -36,4 +36,14 @@ router.get('/candidates', function(req, res, next){
   });
 });
 
+router.get('/statistics', function(req, res, next){
+  Candidate.find((err, candidates) => {
+    if(err){
+      return res.status(500).send(err);
+    } else {
+      res.status(200).render('statistics', {title: "Estadisticas", candidates: candidates });
+    }
+  });
+});
+
 module.exports = router;
