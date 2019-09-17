@@ -3,7 +3,6 @@ var router = express.Router();
 var Candidate = require('../models/candidate');
 var User = require('../models/user');
 
-/* POST para nuevo candidato...*/
 router.post("/", function(req, res, next){
 
     User.actualizaEstado(req.session.userId, function(err){

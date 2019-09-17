@@ -1,23 +1,19 @@
 <% include header.ejs %>
-<div class="container">
-    <div class="card mt-5 text-light bg-dark shadow-lg">
-        <div class="card-header">
-            <h2 class="card-title">Elecciones 2019</h2>
-        </div>
-        <div class="card text-primary shadow-lg">
-            <div class="card-body">
-                <div class="card-title col-md-6 col-lg-6">
-                    <h3>Ingresar a Votar</h3>
-                </div>
-                <div class="formLog col-md-6 col-lg-6">
-                    <div class="btnLog">
-                        <a class="btn btn-success btn-lg" href="/login" role="button">VOTAR</a>
+<body class="text-center">
+    <form class="form-singin">
+        <div class="card mt-5 text-light bg-dark shadow-lg">
+            <div class="card-header">
+                <h2 class="card-title">Elecciones 2019</h2>
+            </div>
+            <div class="card text-primary shadow-lg">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>Ingresar a Votar</h3>
                     </div>
-                    <div class="btnLog">
-                        <a class="btn btn-success btn-lg" href="/candidates" role="button">VER CANDIDATOS</a>
-                    </div>
+                    <a class="btn btn-secondary btn-lg" href="/candidates" role="button">VER CANDIDATOS</a>
+                    <a class="btn btn-success btn-lg" href="/login" role="button">VOTAR</a>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </form>
+</body>
