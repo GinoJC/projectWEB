@@ -9,7 +9,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr class="header">
-                    <th></th>
+                    <th scope="col"></th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Sexo</th>
@@ -19,8 +19,8 @@
             <tbody>
                 <% candidates.forEach((item) => { %>
                     <tr>
-                        <td>
-                            <img src="<%= item.candFile %>" class="img-fluid img-thumbnail">
+                        <td class="w-25">
+                            <img src="../public/images/<%= item.candFile %>" class="img-fluid img-thumbnail">
                         </td>
                         <td>
                             <%= item.name %>
@@ -38,6 +38,7 @@
                 <% }); %>
             </tbody>
         </table>
+        <img src="<%= candidates.candFile %>" class="img-fluid img-thumbnail">
     </div>
     <div class="card mt-3 text-light shadow-lg">
         <div class="card-header bg-dark text-light">
@@ -51,19 +52,19 @@
                             <input class="form-control" type="text" name="nameCand" placeholder="Nombre" required>
                             <input class="form-control" type="text" name="lastCand" placeholder="Apellido" required>
                             <select class="form-control" name="sexCand">
-                                <option value ="male">Hombre</option>
-                                <option value ="female">Mujer</option>    
+                                <option value ="Hombre">Hombre</option>
+                                <option value ="Mujer">Mujer</option>    
                             </select>
                             <input class="form-control" type="text" name="teamCand" placeholder="Partido" required>
                             <div class="form-group input-group">
-                            <label class="input-group-addon" style="vertical-align:top;">
-                                <span class="btn btn-primary">
-                                    Cargar Imágen... <input type="file" onchange="onFileSelected(event);" class="d-none">
-                                </span>
-                            </label>
-                            <input class="form-control" type="text" readonly id="candFile" name="candFile" placeholder="Imágen del candidato...">
-                            <input class="d-none" type="text" id="candidate" name="candidate" required>
-                        </div>
+                                <label class="input-group-addon" style="vertical-align:top;">
+                                    <span class="btn btn-primary">
+                                        Cargar Imágen... <input type="file" onchange="onFileSelected(event);" class="d-none">
+                                    </span>
+                                </label>
+                                <input class="form-control" type="text" readonly id="candFile" name="candFile" placeholder="Imágen del candidato..." value="<%= candidates.candFile %>" required>
+                                <input class="d-none" type="text" id="candidate" value="<%= candidates.candFile %>" name="candidate" required>
+                            </div>
                         </div>
                         <a class="btn btn-secondary btn-lg" href="/">Volver</a>
                         <input class="btn btn-success btn-lg" type="submit" value="AGREGAR">
