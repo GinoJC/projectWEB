@@ -25,6 +25,10 @@ var CandidateSchema = new mongoose.Schema(
             type: Number,
             required: true,
             trim: true
+        },
+        candFile: {
+            type: String,
+            required: true
         }
     }
 );

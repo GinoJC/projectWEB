@@ -10,7 +10,8 @@ router.post('/', function(req, res, next){
       lastName: req.body.lastCand,
       sex: req.body.sexCand,
       team: req.body.teamCand,
-      cantVotes: 0
+      cantVotes: 0,
+      candFile: req.body.candFile
     });
 
     candidate.save(function(err, response){
