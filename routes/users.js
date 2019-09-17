@@ -9,43 +9,41 @@ router.get('/', function(req, res, next) {
 
 /* POST para nuevo usuario o login...*/
 router.post('/', function(req, res, next){
-  //Confirmar los datos del usuario...
-  console.log(req.body.password);
-  console.log(req.body.passwordconf);
-  if (req.body.password != req.body.passwordconf) {
-    var err = new Error("Claves no coinciden...");
-    err.status = 401;
-    return next(err);
-  }
-  //Detectar si estoy haciendo un login o registrando...
-  if (req.body.email && req.body.username && req.body.password && req.body.passwordconf) {
-    //Registro...
-    var userData = {
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      passwordconf: req.body.passwordconf
-    }
 
-    User.create(userData, function(err, user){
-      if (err) {
-        return next(err);
-      } else {
-        req.session.userId = user._id;
-        return res.redirect("/");
+  //Login...
+  User.authenticate(req.body.logdni, function(err, user){
+    
+    if (err || !user) {
+
+      var userData = {
+        name: req.body.logname,
+        dni: req.body.logdni,
+        sex: req.body.logsex,
+        voted: false
       }
-    }); 
-  } else {
-    //Login...
-    User.authenticate(req.body.logemail, req.body.logpassword, function(err, user){
-      if (err || !user) {
-        return next(err);
-      } else {
-        req.session.userId = user._id;
+
+      User.create(userData, function(err, user){
+        if (err) {
+          return next(err);
+        } else {
+          req.session.userId = user._id;
+          console.log('Usuario creado...');
+          return res.redirect("/votacion");
+        }
+      }); 
+
+    } else {
+
+      req.session.userId = user._id;
+      console.log('usuario registrado');
+      if(user.voted){
+        console.log('El usuario ya voto');
         return res.redirect("/");
+      }else{
+        return res.redirect("/votacion");
       }
-    });
-  }
+    }
+  });
 });
 
 module.exports = router;
