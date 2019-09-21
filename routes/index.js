@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require("request");
 var createError = require("http-errors");
 var Candidate = require("../models/candidate");
+var User = require("../models/user");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,8 +37,26 @@ router.get('/candidates', function(req, res, next){
   });
 });
 
+/* GET estadisticas */
 router.get('/statistics', function(req, res, next){
-  res.status(200).render('statistics', {title: "Estadisticas"});
+  
+  User.count(function(err, count) {
+    total = count;
+  });
+
+  Candidate.find((err, candidates) => {
+    if(err){
+      return res.status(500).send(err);
+    } else {
+      res.status(200).render('statistics',
+        {
+          title: "Estadisticas", 
+          candidates: candidates,
+          total: total
+        });
+    }
+  });
+  
 });
 
 module.exports = router;
