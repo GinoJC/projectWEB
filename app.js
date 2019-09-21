@@ -24,14 +24,12 @@ db.once("open", function(){
   console.log('conectado a mongo en localhost:27017');
 });
 
-
 /* Fin Conexion a mongo y el login de usuario */
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var candidatesRouter = require('./routes/candidates');
 var saveVoteRouter = require('./routes/saveVote');
-
 
 var app = express();
 
