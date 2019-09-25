@@ -9,3 +9,10 @@ a {
   margin-left: 20%;
   margin-right: 20%;
 }
+
+.body_index {
+  text-align: center;
+  background-image: url("./../images/presidentes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
