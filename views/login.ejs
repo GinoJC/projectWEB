@@ -10,11 +10,11 @@
                     <div class="card-title">
                         <h3>Ingresar a Votar</h3>
                     </div>
-                    <form action="/users" method="POST">
+                    <form action="/users" method="POST" onsubmit="return validateDNI();">
                         <div class="cargaDatos">
                             <input class="form-control" type="text" name="logname" 
                             placeholder="Nombre" required>
-                            <input class="form-control" type="text" name="logdni" 
+                            <input class="form-control" type="text" name="logdni" id="logdni"
                             placeholder="DNI" required>
                             <select class="form-control" name="logsex">
                                 <option value ="male">Hombre</option>
@@ -29,3 +29,4 @@
         </div>
     </div>
 </div>
+<script src="/javascripts/validateDNI.js"></script>

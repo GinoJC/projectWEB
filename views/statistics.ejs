@@ -1,47 +1,51 @@
 <% include header.ejs %>
 <div class="bg-image"></div>
-    <div id="resultados">
-        <div class="container mt-5">
-            <div class="card shadow-lg bzg-dark">
-                <div class="card-body">
-                <% locals.candidates.forEach((team) => {         
-                    var porc = team.cantVotes * 100 / total;
-                    porc = porc.toFixed(2);
-                    %>
-                    <div class="row" >
-                        <div class="col-md-6 col-lg-6">
-                            <h3>
-                                <div class="alert alert-light">
-                                    Partido: <%= team.team %>
-                                </div>
-                            </h3>
-                            <h3>
-                                <div class="alert alert-light">
-                                    Candidato: <%= team.name %>
-                                </div>
-                            </h3>
-                            <h3>
-                                <div class="alert alert-light">
-                                    Conteo de Votos: <%= team.cantVotes %>
-                                </div>
-                            </h3>
-
-                            <div class="progress" style="height: 40px;">
-                                <div class="progress-bar w-<%= porc %>" 
-                                    role="progressbar" 
-                                    style="width: <%= porc %>%" 
-                                    aria-valuenow="<%= porc %>" aria-valuemin="0" 
-                                    aria-valuemax="100">
-                                    <%= porc %>%
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <hr>
-                <% }); %>
-            </div>
+    <div class="container mt-5">
+        <div class="card mt-5 text-light bg-dark shadow-lg text-center">
+            <div class="card-header">
+                <h2 class="card-title">RESULTADOS</h2>
+            </div>  
         </div>
+        <div class="card shadow-lg bzg-dark">
+            <div class="card-body">
+            <% locals.candidates.forEach((team) => {         
+                var porc = team.cantVotes * 100 / total;
+                porc = porc.toFixed(2);
+                %>
+                <div class="row" >
+                    <div class="col-md-6 col-lg-6">
+                        <h3>
+                            <div class="alert alert-light">
+                                Partido: <%= team.team %>
+                            </div>
+                        </h3>
+                        <h3>
+                            <div class="alert alert-light">
+                                Candidato: <%= team.name %>
+                            </div>
+                        </h3>
+                        <h3>
+                            <div class="alert alert-light">
+                                Cantidad de Votos: <%= team.cantVotes %>
+                            </div>
+                        </h3>
+
+                        <div class="progress" style="height: 40px;">
+                            <div class="progress-bar w-<%= porc %>" 
+                                role="progressbar" 
+                                style="width: <%= porc %>%" 
+                                aria-valuenow="<%= porc %>" aria-valuemin="0" 
+                                aria-valuemax="100">
+                                <%= porc %>%
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+            <% }); %>
+        </div>
+        <a class="btn btn-secondary btn-lg" href="/">Volver al Inicio</a>
     </div>
 </div>
 <% include footer.ejs %>

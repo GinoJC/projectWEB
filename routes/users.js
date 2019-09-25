@@ -38,7 +38,6 @@ router.post('/', function(req, res, next){
       console.log('usuario registrado');
       if(user.voted){
         console.log('El usuario ya voto');
-        return res.redirect("/login");
       }else{
         return res.redirect("/votacion");
       }

@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var request = require("request");
-var createError = require("http-errors");
 var Candidate = require("../models/candidate");
 var User = require("../models/user");
 
@@ -40,22 +38,29 @@ router.get('/candidates', function(req, res, next){
 /* GET estadisticas */
 router.get('/statistics', function(req, res, next){
   
-  User.count(function(err, count) {
-    total = count;
-  });
+  var total;
 
-  Candidate.find((err, candidates) => {
-    if(err){
-      return res.status(500).send(err);
-    } else {
-      res.status(200).render('statistics',
+  const stat = async () => {
+    
+    await User.count(function(err, count) {
+      total = count;
+    });
+  
+    await Candidate.find((err, candidates) => {
+      if(err){
+        return res.status(500).send(err)
+      }else{
+        res.status(200).render('statistics',
         {
           title: "Estadisticas", 
           candidates: candidates,
           total: total
         });
-    }
-  });
+      }
+    });
+  };
+
+  stat();
   
 });
 
